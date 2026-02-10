@@ -26,7 +26,7 @@ This tool was originally developed to streamline shift handovers and production 
 
 ## 📖 How to Use
 
-1.  **Download** the repository or unzip the release.
+1.  **Download** or **Clone** the repository.
 2.  **Open** the `index.html` file in any modern web browser (Chrome, Edge, Firefox, Safari).
 3.  **Start Reporting**:
     *   Select the **Date** and **Shift** (Morning/Evening).
