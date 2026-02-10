@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Reporting Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Shift Reporting Tool</h1>
+
+    <div class="report-header">
+        <div class="form-group">
+            <label for="reporter">Reporter:</label>
+            <input type="text" id="reporter" placeholder="Reporter Name">
+        </div>
+        <div class="form-group">
+            <label for="shift">Shift:</label>
+            <select id="shift">
+                <option value="morning">Morning</option>
+                <option value="evening">Evening</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+        </div>
+    </div>
+
+    <div class="product-form">
+        <h3>Add Product</h3>
+        <div class="form-grid">
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="productionOrder">Production Order:</label>
+                    <input type="text" id="productionOrder" placeholder="12345678">
+                </div>
+                <div class="form-group">
+                    <label for="productName">Name:</label>
+                    <input type="text" id="productName" placeholder="Product Name">
+                </div>
+                <div class="form-group">
+                    <label for="hCode">H-Code:</label>
+                    <input type="text" id="hCode" placeholder="H123456">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Performed actions & status:</label>
+                    <textarea id="comment" placeholder="Additional notes..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="twelvNC">12NC Code:</label>
+                    <input type="text" id="twelvNC" placeholder="4022.123.45678">
+                </div>
+                <div class="form-group">
+                    <label for="timeSpent">Time spent:</label>
+                    <input type="text" id="timeSpent" placeholder="2.5h">
+                </div>
+                <div class="form-group">
+                    <label for="technicianName">Technician Name:</label>
+                    <input type="text" id="technicianName" placeholder="John Doe">
+                </div>
+                <div class="form-group" style="align-self: flex-end;">
+                    <button id="addProduct">&#128221; Add Product</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Production Order</th>
+                        <th style="width: 15%;">Name</th>
+                        <th style="width: 10%;">H-Code</th>
+                        <th style="width: 15%;">12NC Code</th>
+                        <th style="width: 25%;">Performed actions & status</th>
+                        <th style="width: 10%;">Time spent</th>
+                        <th style="width: 10%;">Technician</th>
+                        <th class="action-column">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="actions">
+            <button id="generatePDF">&#128216; Generate PDF</button>
+            <button id="generateCSV">&#128202; Generate CSV</button>
+            <button id="resetReport">&#128293; Reset Report</button>
+        </div>
+
+        <!-- Load jsPDF first -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <!-- Workaround for plugin attachment -->
+        <script>
+            // This ensures jsPDF and the autoTable plugin are properly connected
+            if (window.jspdf && window.jspdf.jsPDF && !window.jspdf.jsPDF.prototype.autoTable) {
+                window.jspdf.applyPlugin(window.jspdf);
+            }
+        </script>
+        <!-- Then load jsPDF-AutoTable -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+        <!-- Application Logic -->
+        <script src="js/db.js"></script>
+        <script src="js/export.js"></script>
+        <script src="js/app.js"></script>
+</body>
+
+</html>
